@@ -1,0 +1,24 @@
+## +) Python의 변수 선언 및 생성 과정
+
+- python은 데이터 자체를 저장하는 것이 아니라 데이터가 저장되어 있는 메모리 주소를 가르킨다.
+    
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8403723a-34c8-423f-b12e-0235c3995715/Untitled.png)
+    
+    1. list a 선언 및 생성
+    
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1067d4c6-f240-4fb0-99e8-7ddbc6adc1a4/Untitled.png)
+    
+    1. b는 a와 같은 주소를 가르킨다!!
+    
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/776f72e4-3396-4369-8667-4ebea9909d4c/Untitled.png)
+    
+    1. list c 선언 및 생성
+    
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/536705eb-6023-4ff9-9e3f-184bd1ad9f0a/Untitled.png)
+    
+    1. list d 선언 및 생성
+    
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/be17b766-0cc2-42c4-b0eb-481cd1b692c5/Untitled.png)
+    
+
+---
