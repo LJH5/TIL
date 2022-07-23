@@ -1,0 +1,12 @@
+## 1. Dictonary
+
+- get
+    
+    ```python
+    a = {'name':'mulcam'}
+    
+    a.get(name) #Error
+    a.get('name') #mulcam 출력
+    a.get('address') #None
+    a.get('address', 3) #None 발생 시 3을 반환(출력X)
+    ```
