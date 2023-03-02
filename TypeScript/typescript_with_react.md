@@ -572,14 +572,14 @@ export default Counter
 
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-const asyncIncrementFetch = createAsyncThunk(
-  'counterSlice/asyncIncrementFetch',
+const asynIncrement = createAsyncThunk(
+  'counterSlice/asyncIncrement',
   async () => {
-    function asyncFunction () {
-      return new Promise(function (resolve) {
+    function asyncFunction (): Promise<number> {
+      return new Promise (function (resolve) {
         setTimeout(() => {
           resolve(1)
-        }, 1000)
+        }, 500);
       })
     }
     const response = await asyncFunction()
@@ -606,19 +606,15 @@ const counterSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(asyncIncrementFetch.pending, (state, action) => {
+    builder.addCase(asynIncrement.pending, (state, action) => {
       state.status = 'Loading'
     })
-    builder.addCase(asyncIncrementFetch.fulfilled, (state, action)=> {
-      if (typeof action.payload === 'number') {
-        state.counter = state.counter + action.payload
-        state.status = 'complete'
-      } else {
-        state.status = 'fail'
-      }
+    builder.addCase(asynIncrement.fulfilled, (state, action) => {
+      state.counter = state.counter + action.payload
+      state.status = 'Complete'
     })
-    builder.addCase(asyncIncrementFetch.rejected, (state, action) => {
-      state.status = 'fail'
+    builder.addCase(asynIncrement.rejected, (state, action) => {
+      state.status = 'Fail'
     })
   }
 })
@@ -627,13 +623,13 @@ export const counterActions = counterSlice.actions
 
 export default counterSlice.reducer
 
-export { asyncIncrementFetch }
+export { asynIncrement }
 ```
 
 ```tsx
 // src/components/Counter.tsx
 
-import { asyncIncrementFetch, counterActions } from '../store/counterSlice'
+import { asynIncrement, counterActions } from '../store/counterSlice'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 
 const Counter = function () {
@@ -648,7 +644,7 @@ const Counter = function () {
       {/* 동기적 */}
       <button onClick={() => dispatch(counterActions.increment({amount: 5}))}>Increment</button>
       {/* 비동기적 */}
-      <button onClick={() => dispatch(asyncIncrementFetch())}>Async Increment</button>
+      <button onClick={() => dispatch(asynIncrement())}>Async Increment</button>
     </div>
   )
 }
